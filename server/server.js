@@ -20,7 +20,7 @@ app.use(cors())
 app.get('/api/items', getItems)
 app.post('/api/items', createItem)
 app.put('/api/items/:id', updateItem)
-app.delete('/api/item/:id', deleteItem)
+app.delete('/api/items/:id', deleteItem)
 
 app.get('/api/homeitems', getTopThree)
 

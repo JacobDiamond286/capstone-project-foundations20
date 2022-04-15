@@ -1,8 +1,3 @@
-
-
-
-
-
 function displayItem(item){
     const body = document.querySelector('body')
     const card = document.createElement('div')
@@ -72,7 +67,7 @@ function editItem(event){
 }
 
 function deleteItem(){
-
+    axios.delete(`http://localhost:4000/api/items/${event.target.id}`).then(res => location.reload())
 }
 
 function getAllItems(){
@@ -112,5 +107,4 @@ function addNewItem(){
 document.getElementById('addItem').addEventListener('click', showInputs)
 document.getElementById('submitNewItem').addEventListener('click', addNewItem)
 
-// window.addEventListener('DOMContentLoaded', getAllItems)
 getAllItems()
