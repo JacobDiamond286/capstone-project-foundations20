@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="test.css" rel="stylesheet">
     <title>Homepage</title>
 </head>
 <body>
@@ -13,15 +14,37 @@
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       
               <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="homepage.html" class="nav-link px-2 text-secondary">Home</a></li>
+                <li><a href="homepage.html" class="nav-link px-2 text-secondary" id="home">Home</a></li>
                 <li><a href="wishlist.html" class="nav-link px-2 text-white">Wishlist</a></li>
-                <li><a href="blog.html" class="nav-link px-2 text-white">Blog</a></li>
+                <li><a href="blog.html" class="nav-link px-2 text-white" id="blog">Blog</a></li>
               </ul>
             </div>
           </div>
+          
       </header>
+      <section id="homepage">
+        <div id="hero">
+          <div id="herotitle">
+            <h1 class="display-6" id="herotext">This is a page for Jacob's wishlist and some blog posts</h1>
+            <div>
+              <a href="wishlist.html"><button class="herobtn"><h2>Wishlist</h2></button></a>
+              <a href="blog.html"><button class="herobtn"><h2>Blog</h2></button></a>
+            </div>
+          </div>
+          <img src="../images/5.jpg" id="heroimg">
+        </div>
+      </section>
+      <div id="homestuff" class="bg-dark">
+        <div id="topwishlist">
+          <h1 class="display-3">Top 3 Wishlist</h1>
+        </div>
+        <div id="topblog">
+          <h1 class="display-3">Top 2 Blog Posts</h1>
+        </div>
+      </div>
 
-      
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+      <script src="main.js"></script>
 </body>
 </html>

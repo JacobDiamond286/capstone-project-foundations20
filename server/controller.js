@@ -1,4 +1,5 @@
-const globalID = 5
+const globalProductID = 5
+const globalPostID = 4
 const products = [
     {
         productId: 1,
@@ -29,18 +30,36 @@ const products = [
         location: 'https://www.amazon.com/gp/product/1506711995/ref=ewc_pr_img_2?smid=ATVPDKIKX0DER&psc=1'
     }
 ]
+const posts = [
+    {
+        postId: 1,
+        title: 'Is Red Dead Redemption 2 any good?',
+        body: "Idk, I haven't played it",
+    },
+    {
+        postId: 2,
+        title: 'Is elden ring the best souls game?',
+        body: "Nah, ds1 is better.",
+    },
+    {
+        postId: 3,
+        title: 'How about ds3?',
+        body: "again, cool, but not ds1",
+    },
+]
 
 module.exports = {
     // product funtions
     getItems: (req, res) => {
-        res.status(200).send(products)
+        let reverseProducts = products.reverse()
+        res.status(200).send(reverseProducts)
     },
     getTopThree: (req, res) => {
-        res.status(200).send([products[1], products[2]])
+        res.status(200).send([products[0], products[1], products[2]])
     },
 
     deleteItem: (req, res) => {
-        let index = products.findIndex(item => item.productId === +req.params.productId)
+        let index = products.findIndex(item => item.productId === +req.params.id)
         products.splice(index, 1)
         res.status(200).send(products)
     },
@@ -48,7 +67,7 @@ module.exports = {
     createItem: (req, res) => {
         let { name, description, price, location } = req.body
         let newItem = {
-            productId: globalID,
+            productId: globalProductID,
             name,
             description,
             price,
@@ -56,7 +75,7 @@ module.exports = {
         }
         products.push(newItem)
         res.status(200).send(products)
-        globalID++
+        globalProductID++
     },
 
     updateItem: (req, res) => {
@@ -72,7 +91,44 @@ module.exports = {
         }
 
         res.status(400).send('Unable to edit item')
-    }
+    },
 
     // blog functions
+    getPosts: (req, res) => {
+        res.status(200).send(posts)
+    },
+    getTopTwo: (req, res) => {
+        res.status(200).send([posts[0], posts[1]])
+    },
+
+    deletePost: (req, res) => {
+        let index = posts.findIndex(item => item.postId === +req.params.id)
+        posts.splice(index, 1)
+        res.status(200).send(posts)
+    },
+
+    createPost: (req, res) => {
+        let { title, body} = req.body
+        let newPost = {
+            postId: globalPostID,
+            title,
+            body,
+        }
+        posts.push(newPost)
+        res.status(200).send(posts)
+        globalPostID++
+    },
+
+    updatePost: (req, res) => {
+        const { title, body } = req.body
+        let index = posts.findIndex(item => item.postId === +req.params.id)
+        
+        if(index !== -1){
+            posts[index].title = title ? title : posts[index].title
+            posts[index].body = body ? body : posts[index].body
+            return res.status(200).send(posts)
+        }
+
+        res.status(400).send('Unable to edit post')
+    }
 }
