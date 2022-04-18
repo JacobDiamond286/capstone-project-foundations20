@@ -1,6 +1,6 @@
-const globalProductID = 5
-const globalPostID = 4
-const products = [
+let globalProductID = 5
+let globalPostID = 4
+let products = [
     {
         productId: 1,
         name: 'Red Dead Redemption 2',
@@ -30,7 +30,7 @@ const products = [
         location: 'https://www.amazon.com/gp/product/1506711995/ref=ewc_pr_img_2?smid=ATVPDKIKX0DER&psc=1'
     }
 ]
-const posts = [
+let posts = [
     {
         postId: 1,
         title: 'Is Red Dead Redemption 2 any good?',
@@ -51,8 +51,7 @@ const posts = [
 module.exports = {
     // product funtions
     getItems: (req, res) => {
-        let reverseProducts = products.reverse()
-        res.status(200).send(reverseProducts)
+        res.status(200).send(products)
     },
     getTopThree: (req, res) => {
         res.status(200).send([products[0], products[1], products[2]])

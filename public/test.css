@@ -88,7 +88,7 @@ h1 {
     margin: 20px
 }
 
-#herobtn:hover {
+.herobtn:hover {
     background-color: rgba(231, 217, 179, 1);
     border: solid black 2px;
     color: black;
@@ -110,4 +110,38 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+#wishlist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-blog {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgba(231, 217, 179, .0);
+}
+
+.delete-blog {
+    border-radius: 20px;
+    padding: 10px;
+    background-color: rgba(231, 217, 179, .0);
+}
+
+.edit-blog:hover {
+    background-color: rgb(40,36,44);
+    color: white
+}
+
+.delete-blog:hover {
+    background-color: rgb(40,36,44);
+    color: white
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
 }

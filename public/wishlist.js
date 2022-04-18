@@ -1,13 +1,16 @@
 function displayItem(item){
-    const body = document.querySelector('body')
-    const card = document.createElement('div')
-    const name = document.createElement('h2')
-    const edit = document.createElement('button')
-    const deleteBtn = document.createElement('button')
-    const description = document.createElement('p')
-    const price = document.createElement('h4')
-    const link = document.createElement('a')
-    const linkText = document.createElement('h4')
+    let body = document.getElementById('wishlist-container')
+    console.log(body)
+    let card = document.createElement('div')
+    let name = document.createElement('h2')
+    let edit = document.createElement('button')
+    let deleteBtn = document.createElement('button')
+    let description = document.createElement('p')
+    let price = document.createElement('h4')
+    let link = document.createElement('a')
+    let linkText = document.createElement('h4')
+    let buttonsContainer = document.createElement('div')
+    buttonsContainer.id = 'buttons-container'
     link.appendChild(linkText)
     link.setAttribute('href', `${item.location}`)
     linkText.textContent = 'Find Here'
@@ -18,25 +21,28 @@ function displayItem(item){
     card.appendChild(description)
     card.appendChild(price)
     card.appendChild(link)
-    card.appendChild(edit)
-    card.appendChild(deleteBtn)
+    card.appendChild(buttonsContainer)
+    buttonsContainer.appendChild(edit)
+    buttonsContainer.appendChild(deleteBtn)
     body.appendChild(card)
+    name.classList.add('display-6')
     card.classList.add('card')
     card.id = `item${item.productId}`
-    body.id = 'card'
     price.class = 'price'
+    deleteBtn.classList = "delete-blog"
     deleteBtn.id = item.productId
     deleteBtn.addEventListener('click', deleteItem)
     deleteBtn.textContent = 'Delete'
+    edit.classList = "edit-blog"
     edit.id = item.productId
     edit.addEventListener('click', editItem)
     edit.textContent = 'Edit'
 }
 
 function editItem(event){
-    const body = document.querySelector('body')
-    const item = document.getElementById(`item${event.target.id}`)
-    const itemEdit = document.createElement('div')
+    let container = document.getElementById('wishlist-container')
+    let item = document.getElementById(`item${event.target.id}`)
+    let itemEdit = document.createElement('div')
     itemEdit.innerHTML = `
     <input type="text" id="editName" placeholder="Item Name">
     <input type="text" id="editDescription" placeholder="Item Description">
@@ -44,13 +50,13 @@ function editItem(event){
     <input type="text" id="editLink" placeholder="Link To Item">
     <button type="submit" id="submitItem">Submit</button>`
 
-    body.replaceChild(itemEdit, item)
+    container.replaceChild(itemEdit, item)
 
-    const editName = document.getElementById(`editName`)
-    const editDescription = document.getElementById(`editDescription`)
-    const editPrice = document.getElementById(`editPrice`)
-    const editLink = document.getElementById(`editLink`)
-    const submitItem = document.getElementById(`submitItem`)
+    let editName = document.getElementById(`editName`)
+    let editDescription = document.getElementById(`editDescription`)
+    let editPrice = document.getElementById(`editPrice`)
+    let editLink = document.getElementById(`editLink`)
+    let submitItem = document.getElementById(`submitItem`)
 
     submitItem.addEventListener('click', () => {
         let body = {

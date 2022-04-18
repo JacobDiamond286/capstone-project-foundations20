@@ -1,42 +1,47 @@
 function displayPost(post){
-    const body = document.getElementById('blog-container')
-    const card = document.createElement('div')
-    const title = document.createElement('h2')
-    const edit = document.createElement('button')
-    const deleteBtn = document.createElement('button')
-    const bodyText = document.createElement('p')
+    let body = document.getElementById('blog-container')
+    let card = document.createElement('div')
+    let title = document.createElement('h2')
+    let edit = document.createElement('button')
+    let deleteBtn = document.createElement('button')
+    let bodyText = document.createElement('p')
+    let buttonsContainer = document.createElement('div')
+    buttonsContainer.id = 'buttons-container'
     title.textContent = post.title
     bodyText.textContent = post.body
     card.appendChild(title)
     card.appendChild(bodyText)
-    card.appendChild(edit)
-    card.appendChild(deleteBtn)
+    card.appendChild(buttonsContainer)
+    buttonsContainer.appendChild(edit)
+    buttonsContainer.appendChild(deleteBtn)
     body.appendChild(card)
     card.classList.add('card')
     card.id = `post${post.postId}`
     title.classList.add('display-6')
     deleteBtn.id = post.postId
+    deleteBtn.classList = "delete-blog"
     deleteBtn.addEventListener('click', deletePost)
     deleteBtn.textContent = 'Delete'
+    edit.classList = "edit-blog"
     edit.id = post.postId
     edit.addEventListener('click', editPost)
     edit.textContent = 'Edit'
 }
 
 function editPost(event){
-    const body = document.querySelector('body')
-    const post = document.getElementById(`post${event.target.id}`)
-    const postEdit = document.createElement('div')
+    let container = document.getElementById('blog-container')
+    let post = document.getElementById(`post${event.target.id}`)
+    let postEdit = document.createElement('div')
     postEdit.innerHTML = `
     <input type="text" id="editTitle" placeholder="Title">
     <input type="text" id="editBody" placeholder="Body">
     <button type="submit" id="submitPost">Submit</button>`
 
-    body.replaceChild(postEdit, post)
+    container.replaceChild(postEdit, post)
 
-    const editTitle = document.getElementById(`editTitle`)
-    const editBody = document.getElementById(`editBody`)
-    const submitPost = document.getElementById(`submitPost`)
+    let editTitle = document.getElementById(`editTitle`)
+    let editBody = document.getElementById(`editBody`)
+    let submitPost = document.getElementById(`submitPost`)
 
     submitPost.addEventListener('click', () => {
         let body = {
